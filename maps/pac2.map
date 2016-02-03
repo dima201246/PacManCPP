@@ -1,0 +1,56 @@
+level = 2 # Номер уровня
+lives = 2 # Колличество жизней, берётся только на первом уровне
+speed = 250 # Скорорость изры, чем меньше, тем больше
+all_dots = 192 # Общее колличество точек, которых можно съесть
+# Направления:
+# 1 - Вверх
+# 2 - Вниз
+# 3 - Влево
+# 4 - Вправо
+# 0 - Стоять на месте
+tp_direction_1 = 3 # Направление Пак-мена после выхода из первого туннеля
+tp_direction_2 = 4 # Направление Пак-мена после выхода из второго туннеля
+
+next_map = pac2.map # Имя файла со следующим уровнем
+next_level = end # Номер следующего уровня (можно название), "end" - конец игры
+
+map_size_x = 25 # Размер карты по X
+map_size_y = 21 # Размер карты по Y
+
+teleport1_x = 26 # Координата X 1-го туннеля
+teleport1_y = 10 # Координата Y 1-го туннеля
+teleport2_x = 0 # Координата X 2-го туннеля
+teleport2_y = 10 # Координата Y 2-го туннеля
+
+spawn_pac_x = 13 # Координата X спавна Пак-мена
+spawn_pac_y = 16 # Координата Y спавна Пак-мена
+ghost = 4 # Колличество приведений на уровне
+
+ghost_coord_home_x = 13 // Координата X дома приведений
+ghost_coord_home_y = 10 // Координата Y дома приведений
+
+debug_map = 0 # Вывод отладочной информации
+god_mode_delay = 40 // Количество интераций по speed милисекунд с GodMode
+
+# Сама карта, можно в одну линию
+map = "wwwwwwwwwwwwwwwwwwwwwwwww
+wssssssssssswsssssssssssw
+wbwwwwswwwwswswwwwswwwwbw
+wsssssssssssssssssssssssw
+wswwwwswswwwwwwwswswwwwsw
+wsssssswsssswsssswssssssw
+wwwwwwswwwwewewwwwswwwwww
+eeeeewsweeeeeeeeewsweeeee
+wwwwwwswewwwdwwwewswwwwww
+eeeeeeseewwwewwweeseeeeee
+wwwwwwswewwwwwwwewswwwwww
+eeeeewsweeeeeeeeewsweeeee
+wwwwwwswewwwwwwwewswwwwww
+wssssssssssswsssssssssssw
+wswwwwswwwwswswwwwswwwwsw
+wbssswssssssesssssswsssbw
+wwwwswswswwwwwwwswswswwww
+wsssssswsssswsssswssssssw
+wswwwwwwwwwswswwwwwwwwwsw
+wsssssssssssssssssssssssw
+wwwwwwwwwwwwwwwwwwwwwwwww"

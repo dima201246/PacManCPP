@@ -1,0 +1,54 @@
+level = 1 # Номер уровня
+lives = 2 # Колличество жизней, берётся только на первом уровне
+speed = 300 # Скорорость изры, чем меньше, тем больше
+all_dots = 186 # Общее колличество точек, которых можно съесть
+# Направления:
+# 1 - Вверх
+# 2 - Вниз
+# 3 - Влево
+# 4 - Вправо
+# 0 - Стоять на месте
+tp_direction_1 = 3 # Направление Пак-мена после выхода из первого туннеля
+tp_direction_2 = 4 # Направление Пак-мена после выхода из второго туннеля
+next_map = pac2.map # Имя файла со следующим уровнем
+next_level = Pac-man original (Level 2) # Номер следующего уровня (можно название)
+map_size_x = 22 # Размер карты по X
+map_size_y = 22 # Размер карты по Y
+
+teleport1_x = 23 # Координата X 1-го туннеля
+teleport1_y = 9 # Координата Y 1-го туннеля
+teleport2_x = 0 # Координата X 2-го туннеля
+teleport2_y = 9 # Координата Y 2-го туннеля
+
+spawn_pac_x = 11 # Координата X спавна Пак-мена
+spawn_pac_y = 14 # Координата Y спавна Пак-мена
+ghost = 4 # Колличество приведений на уровне
+ghost_coord_home_x = 12 # Координата X дома приведений
+ghost_coord_home_y = 12 # Координата Y дома приведений
+debug_map = 0 # Вывод отладочной информации
+#god_mode_cheat = 0 # Чит-код, работает только в режиме отладки
+god_mode_delay = 50 # Количество интераций по speed милисекунд с GodMode
+
+# Сама карта, можно в одну линию
+map = "wwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwww
+wwwwwsssssssssssswwwww
+wwwwwswwwwwwwwwwswwwww
+wwwssswbssssssbwssswww
+wwwswswswwsswwswswswww
+wwwbwsssssssssssswbwww
+wwwwwswwwwwwwwwwswwwww
+ssssssssssssssssssssss
+wwwwswwwswddwswwwswwww
+wwwwswsssweewssswswwww
+wwwwswswsweewswswswwww
+wwssswswswwwwswswsssww
+wwswswswsweswswswswsww
+wwssssssssssssssssssww
+wwswwwwwswwswswwwwwsww
+wwswssswswsswswssswsww
+wwswswswswbwwswswswsww
+wwswswswswsswswswswsww
+wwbsssssswwswssssssbww
+wwwwwwwwsssssswwwwwwww
+wwwwwwwwwwwwwwwwwwwwww"
