@@ -68,7 +68,7 @@ bool first_start = true; // Первое открытие
 # ifdef WIN32
 string map_now = ".\\maps\\pac.map"; // Начальная карта
 # else
-string map_now = ".\/maps\/pac.map"; // Начальная карта
+string map_now = "./maps/pac.map"; // Начальная карта
 # endif
 
 string level; // Номер или название уровня
@@ -93,6 +93,9 @@ string del_new_str (string line) { // Удаление символа новой
 void load_map(char **game_map) { // Загрузка карты в ОЗУ
 	string map_line = del_new_str(conf("map", map_now));
 	int k = 0;
+	for (int y = 0; y <= map_size[1]; y++) // Заполнение карты пустотой
+		for (int x = 0; x <= map_size[0]; x++)
+			game_map[x][y] = 'e';
 	for (int y = 1; y < map_size[1]; y++)
 		for (int x = 1; x < map_size[0]; x++) {
 			game_map[x][y] = map_line[k];
@@ -168,9 +171,12 @@ void write_map(char **game_map, ghost_object *ghosts, bool kill, char pac_skill)
 		}
 		printw("\n"); // Спуск строки
 	}
-	if (debug == "1") // Вывод координат приведений
-		for (int i = 0; i < num_of_ghosts; i++)
-			mvprintw(i + 1, map_size[0] + 1, "coord_x_%i%s%i%s%i%s%i%s", i, ": ", ghosts[i].posX, " coord_y_", i, ": ", ghosts[i].posY, "\n");
+	if (debug == "1") { // Вывод координат приведений
+		int i;
+		for (i = 0; i < num_of_ghosts; i++)
+			mvprintw(i + 1, map_size[0] + 1, "coord_x_%i%s%i%s%i%s%i", i, ": ", ghosts[i].posX, " coord_y_", i, ": ", ghosts[i].posY);
+		mvprintw(i + 1, map_size[0] + 1, "pacman_x_%i%s%i%s%i%s%i", i, ": ", pac_coord[0], " pacman_y_", i, ": ", pac_coord[1]);
+	}
 }
 
 void pause(char **game_map, ghost_object *ghosts) { // Пауза
@@ -510,7 +516,7 @@ void action_pac(char **game_map, ghost_object *ghosts) { // Автоматиче
 		direction = tp_direction[0]; // Изменение направления
 		tp_process = true;
 	}
-	if ((pac_coord[0] == tp_coord[0]) && (pac_coord[1] == tp_coord[1]) && (tp_process == false)) { // Если совпадают координаты Пак-мена с 1-м туннелем и вход во второй туннель не был выполнен
+	if ((pac_coord[0] == tp_coord[0]) && (pac_coord[1] == tp_coord[1]) && (!tp_process)) { // Если совпадают координаты Пак-мена с 1-м туннелем и вход во второй туннель не был выполнен
 		for (int i = 0; i < num_of_ghosts; i++)
 		if (ghosts[i].iseehim != 0)
 			ghosts[i].tunnel_detected = true;
@@ -818,7 +824,7 @@ void win(char **game_map, ghost_object *ghosts) { // Если игрок выи�
 # ifdef WIN32
 		map_now = ".\\maps\\" + conf("next_map", map_now); // Загрузка пути к новой карте
 # else
-		map_now = ".\/maps\/" + conf("next_map", map_now); // Загрузка пути к новой карте
+		map_now = "./maps/" + conf("next_map", map_now); // Загрузка пути к новой карте
 # endif
 		dots = 0; // Онуление кол-ва точек
 		update_map = 0; // Онуление кол-ва интераций
@@ -863,7 +869,7 @@ void game_over(char **game_map, ghost_object *ghosts) { // Проигрыш
 # ifdef WIN32
 	map_now = ".\\maps\\pac.map"; // Подключение первого уровня
 # else
-	map_now = ".\/maps\/pac.map"; // Подключение первого уровня
+	map_now = "./maps/pac.map"; // Подключение первого уровня
 # endif
 	dots = 0; // Онулениекол-ва точек
 	lives = -5; // -5 жизней, чтобы они взялись из файла
@@ -922,7 +928,7 @@ void game() {
 		system_pause();
 		return;
 	}
-	banka = conf("speed", map_now); // Получение размера скорости, чем меньше, тем выше
+	banka = conf("speed", map_now); // Получение скорости, чем меньше, тем выше
 	int DELAY_PAC = atoi(banka.c_str());
 	banka.clear();
 	if (lives == -5) {
